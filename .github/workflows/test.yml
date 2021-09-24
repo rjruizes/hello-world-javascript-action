@@ -1,0 +1,13 @@
+on: push
+name: testing
+jobs:
+  testing:
+    name: testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Test
+      run: |
+        jq -s '.[0] * .[1]' f1.json f2.json > f3.json
+        cat f3.json
